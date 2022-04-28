@@ -1,0 +1,59 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Listagem de itens com Spring Boot">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="img/car.svg" type="image/svg+xml">
+  <title>Inserir Moto</title>
+</head>
+
+<body>
+  <header>
+
+  </header>
+  <main class="main">
+    <h1 class="titulo">Inserir Carro</h1>
+    <form th:object="${motoDto}" class="form" action="/motos/inserir" method="post">
+      <label>
+        Marca
+        <input type="text" th:field="*{marca}" required>
+      </label>
+      <p class="error" th:errors="*{marca}"></p>
+      <label>
+        Modelo
+        <input type="text" th:field="*{modelo}" required>
+      </label>
+      <p class="error" th:errors="*{modelo}"></p>
+      <label>
+        Ano
+        <input type="number" min="1900" max="2022" th:field="*{ano}" required>
+      </label>
+      <p class="error" th:errors="*{ano}"></p>
+      <label>
+        Combustivel
+        <select th:field="*{combustivel}">
+          <option value="" selected>Selecione o tipo de combustível</option>
+          <option value="Flex">Flex</option>
+          <option value="Gasolina">Gasolina</option>
+          <option value="Alcool">Álcool</option>
+        </select>
+      </label>
+      <p class="error" th:errors="*{combustivel}"></p>
+      <label>
+        Cilindradas
+        <input type="number" th:field="*{cilindradas}">
+      </label>
+      <p class="error" th:errors="*{cilindradas}"></p>
+      <label>
+        Aro
+        <input type="number" th:field="*{aro}">
+      </label>
+      <button type="submit">Inserir</button>
+    </form>
+  </main>
+</body>
+
+</html>

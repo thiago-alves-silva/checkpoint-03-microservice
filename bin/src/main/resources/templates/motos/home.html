@@ -1,0 +1,54 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Listagem de itens com Spring Boot">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="img/car.svg" type="image/svg+xml">
+  <title>Lista de Motos</title>
+</head>
+
+<body>
+  <header>
+
+  </header>
+  <main class="main">
+    <div class="titulo-container">
+      <h1 class="titulo">Listas <br>de Motos <br></h1>
+      <a class="add" href="/motos/inserir" title="Inserir nova moto">+</a>
+    </div>
+    <h2 class="subtitulo" th:utext="${predefined ? '(predefinido)' : '(buscado)'}"></h2>
+    <ul class="lista">
+      <li th:each="moto : ${motos}">
+        <div>
+          <span class="modelo" th:text="${moto.getModelo()}" title="Modelo"></span>
+          <span class="id" th:text="'#' + ${moto.getId()}" title="ID"></span>
+        </div>
+        <div title="Marca">
+          <img src="img/car.svg" alt="">
+          <span th:text="${moto.getMarca()}"></span>
+        </div>
+        <div title="Ano">
+          <img src="img/calendar.svg" alt="">
+          <span th:text="${moto.getAno()}"></span>
+        </div>
+        <div title="Cilindradas">
+          <img src="img/motorcycle.svg" alt="">
+          <span th:text="${moto.getCilindradas} + 'cc'"></span>
+        </div>
+        <div title="Aro">
+          <img src="img/wheel.svg" alt="">
+          <span class="aro" th:text="${moto.getAro()}"></span>
+        </div>
+        <div title="Combustível">
+          <img src="img/gas.svg" alt="">
+          <span th:text="${moto.getCombustivel()}"></span>
+        </div>
+      </li>
+    </ul>
+  </main>
+</body>
+
+</html>

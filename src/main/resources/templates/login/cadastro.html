@@ -1,0 +1,36 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Listagem de itens com Spring Boot">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="img/car.svg" type="image/svg+xml">
+  <title>Criar conta</title>
+</head>
+
+<body>
+  <header>
+
+  </header>
+  <main class="main">
+    <h1 class="titulo">Cadastro</h1>
+    <form th:object="${loginDto}" class="form" action="/cadastro" method="post">
+      <label>
+        Username
+        <input type="text" th:field="*{username}" required>
+      </label>
+      <p class="error" th:errors="*{username}"></p>
+      <label>
+        Password
+        <input type="password" th:field="*{password}" required>
+      </label>
+      <p class="error" th:errors="*{password}"></p>
+      <button type="submit">Cadastrar</button>
+    </form>
+    <p class="error" th:text="${error}"></p>
+  </main>
+</body>
+
+</html>
